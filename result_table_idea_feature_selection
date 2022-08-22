@@ -1,9 +1,9 @@
 
 
-| dataset | features_used | Proxy_target | p_attributute | selection_technique | criterion | classifier_acc | DI  | SP  | EOD  |
-| --------| ------------- | -------------| ------------- | --------------------| ----------| ---------------| ----| --- | ---- |
-|         | all features  |     Y        |               |                     |           |                |     |     |      |
-|         |   Xa features |     Y        |               |                     |           |                |     |     |      |
-|         |Xabar features |     Y        |               |                     |           |                |     |     |      |
+| dataset | features_used | Proxy_target | p_attributute | selection_technique | classifier_acc | DI  | SP  | EOD  |
+| --------| ------------- | -------------| ------------- | --------------------| ---------------| ----| --- | ---- |
+|         | all features  |     Y        |               |                     |                |     |     |      |
+|         |   Xa features |     Y        |               |                     |                |     |     |      |
+|         |Xabar features |     Y        |               |                     |                |     |     |      |
 
 
