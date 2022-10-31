@@ -2,7 +2,7 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import *
+from sklearn import metrics
 from sklearn.metrics import mutual_info_score
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn import metrics
@@ -116,7 +116,7 @@ def base_model(data,target,col_name):
     original_output['actual'] = y_test.values
     return original_output
 
-    
+
 def get_fairness_metrics_bc(original_output,col_name):
     '''
     takes prediction df and returns calculated fairness metrics 
@@ -168,7 +168,7 @@ def get_fairness_metrics_bc(original_output,col_name):
     accuracy = (original_output['target_predicted']== original_output['actual']).mean()
     
     return ([disparate_impact,statistical_parity_difference,equal_opportunity_difference,accuracy])
-    
+
 
 def fair_model(data, subset_cols, target, p_att):
     
@@ -267,7 +267,7 @@ def calculate_miscore_xy(data, y_col,a_col):
     adult_dataFrame_feature_target['Y'] = y_col # adding y column
     return adult_dataFrame_feature_target
 
-#function for calculating mutual information score for each X (features) and A (demographic variables)
+# function for calculating mutual information score for each X (features) and A (demographic variables)
 
 def calculate_miscore_xa(data,protected_attributes):
     '''
@@ -401,8 +401,8 @@ class MiEstimator():
         for parameter, value in parameters.items():
             setattr(self, parameter, value)
         return self
-    
-#Forward sfs
+
+# Forward sfs
 
 def sequential_feature_selection_forward(data,features_cat,features_num,protected_attributes, target,feat_dictionary):  
     #return 
@@ -498,7 +498,7 @@ def score(X, bins,protected_attributes):
         mis_xa.append([feat,mis_a])
     dataframe = pd.DataFrame(mis_xa,columns = ['feat','mi']).set_index('feat')
     return dataframe['mi']
-    
+
 def maximally_predictive_minimally_demographic(data,features_cat,features_num,protected_attributes, target,feat_dictionary): # add feat_dictionary
     '''
     Computes MI using score function for both XA and XY and by taking the ration selects K relevant and fair features.
@@ -529,8 +529,8 @@ def maximally_predictive_minimally_demographic(data,features_cat,features_num,pr
         F = F.iloc[:k]
         dictionary_features[att] = list(F.index.values)
     return features_encoded_data, dictionary_features
-        
-    
+
+
 # Model functions
 
 def base_classifier(features_encoded_data,target,p_att_col,model_cols,filtered_col, etas): # etas not in use but passing for consistency of format
@@ -644,6 +644,6 @@ def main_exp_bf_func(data,features_cat,features_num,protected_attributes, target
     data_df = data.df 
     features_encoded_data, dict_subsets_xy_greaterthan_xa = technique(data_df,features_cat,features_num,protected_attributes, target,feat_dictionary)
     return build_model(data_df,features_encoded_data, p_att_col, dict_subsets_xy_greaterthan_xa,target, priviliged_vals, model, etas)
-     
+
     
 

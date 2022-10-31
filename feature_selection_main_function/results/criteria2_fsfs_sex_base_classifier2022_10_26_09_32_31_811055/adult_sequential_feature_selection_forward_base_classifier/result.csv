@@ -1,0 +1,2 @@
+model_type,disparate_impact,statistical_parity_difference,equal_opportunity_difference,accuracy
+base_model,0.47992405051190623,-0.07373143417245026,-0.04928038269619367,0.7988944168048646
